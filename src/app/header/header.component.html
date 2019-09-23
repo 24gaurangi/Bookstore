@@ -5,8 +5,8 @@
         </div>
         <div class="navbar-default">
             <ul class="nav navbar-nav">
-                <li><a href="#">Recipes</a></li>
-                <li><a href="#">Shopping list</a></li>
+                <li [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active"><a routerLink="/">Recipes</a></li>
+                <li routerLinkActive="active"><a routerLink="/shopping">Shopping list</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
