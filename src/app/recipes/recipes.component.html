@@ -1,6 +1,14 @@
-<div class="col-xs-3" style="border-right: 1px solid #eee; margin-right:5px">
-    <app-recipe-list></app-recipe-list>
-</div>
-<div class="col-xs-8">
-    <app-recipe-detail></app-recipe-detail>
+<div class="row">
+    <div class="col-md-5">
+        <app-recipe-list (wasRecipeSelected)="selectedRecipe=$event"></app-recipe-list>
+    </div>
+
+    <div class="col-md-7">
+        <app-recipe-detail *ngIf="selectedRecipe; else infoText" 
+        [recipe]="selectedRecipe"></app-recipe-detail>
+
+        <ng-template #infoText>
+            <p>Please select a Recipe!</p>
+        </ng-template>
+    </div>
 </div>
