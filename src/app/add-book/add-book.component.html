@@ -1,0 +1,54 @@
+<div class="row">
+    <div class="col-xs-12">
+        <form (ngSubmit)="onAddItem(f)" #f="ngForm"> 
+            <div class="row">
+                <div class="col-sm-5 form-group">
+                    <label for="title">Title</label>
+                    <input type="text" id="title" class="form-control" name="title" ngModel required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-5 form-group">
+                    <label for="author">Author</label>
+                    <input type="text" id="author" class="form-control" name="author" ngModel required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-5 form-group">
+                        <label for="contry">Country</label>
+                        <input type="text" id="country" class="form-control" name="country" ngModel required>
+                    </div>
+            </div>
+            <div class="row">
+                    <div class="col-sm-5 form-group">
+                        <label for="title">Language</label>
+                        <input type="text" id="lang" class="form-control" name="lang" ngModel required>
+                    </div>
+      
+                    <!-- <div class="col-sm-4 form-group">
+                        <label for="author">Author</label>
+                        <input type="text" id="author" class="forma-control" name="author" ngModel>
+                    </div>
+                    <div class="col-sm-4 form-group">
+                            <label for="contry">Country</label>
+                            <input type="text" id="country" class="forma-control" name="country" ngModel>
+                        </div> -->
+                </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <button class="btn btn-success" type="submit" [disabled]="!f.valid">Add</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-10">
+        <hr>
+        <ul class="list-group">
+            <a href="" class="list-group-item" style="cursor:pointer" *ngFor="let b of books">
+            {{b.title}}
+            </a>
+        </ul>
+    </div>
+</div>

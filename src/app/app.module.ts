@@ -12,10 +12,18 @@ import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.com
 import { RecipeItemComponent } from './recipes/recipe-list/recipe-item/recipe-item.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
+import { BooksComponent } from './books/books.component';
+import { BookListComponent } from './books/book-list/book-list.component';
+import { BookDetailComponent } from './books/book-detail/book-detail.component';
+import { BookItemComponent } from './books/book-list/book-item/book-item.component';
+import { BookService } from './books/book.service';
+import { AddBookComponent } from './add-book/add-book.component';
+import { FormsModule } from '@angular/forms';
+import { SearchBookPipe } from './books/search.filter';
 
 const appRoutes: Routes =[
-  {path:'', component:RecipesComponent },
-  {path:'shopping', component:ShoppingListComponent},
+  {path:'', component:BooksComponent},
+  {path:'addbook', component:AddBookComponent},
 ]
 
 @NgModule({
@@ -27,14 +35,22 @@ const appRoutes: Routes =[
     RecipeDetailComponent,
     RecipeItemComponent,
     ShoppingListComponent,
-    ShoppingEditComponent
+    ShoppingEditComponent,
+    BooksComponent,
+    BookListComponent,
+    BookDetailComponent,
+    BookItemComponent,
+    AddBookComponent,
+    SearchBookPipe
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [BookService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

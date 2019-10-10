@@ -1,0 +1,13 @@
+<!-- <div class="container"> -->
+<div class="row">
+    <div class="col-xs-12">
+        <input type="text" class="form-control searchbox" placeholder="Search.." [(ngModel)]="searchbook" >
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-xs-12" >
+        <app-book-item *ngFor="let b of books | search: searchbook" [book]="b" (bookSelected)="onBookSelected(b)"></app-book-item>
+    </div>
+</div>
+
