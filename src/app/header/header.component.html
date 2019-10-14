@@ -1,13 +1,13 @@
 <nav class="navbar navbar-default">
     <div class="container-fluid">
-        <div class="navbar-header">
-            <a href="#" class="navbar-brand">Books</a>
+        <div class="navbar-header" [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active">
+            <a routerLink="/home" class="navbar-brand">Bookstore</a>
         </div>
         <div class="navbar-default">
             <ul class="nav navbar-nav">
                 <li [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active"><a routerLink="/">Books</a></li>
-                <!-- <li routerLinkActive="active"><a routerLink="/books">Books</a></li> -->
-                <li routerLinkActive="active"><a routerLink="/addbook">Add Book</a></li>
+                <!-- <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/books">Books</a></li> -->
+                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/addbook">Add Book</a></li>
             </ul>
             <!-- <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">

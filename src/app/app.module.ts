@@ -20,8 +20,10 @@ import { BookService } from './books/book.service';
 import { AddBookComponent } from './add-book/add-book.component';
 import { FormsModule } from '@angular/forms';
 import { SearchBookPipe } from './books/search.filter';
+import { HomeComponent } from './home/home.component';
 
 const appRoutes: Routes =[
+  {path:'home', component:HomeComponent},
   {path:'', component:BooksComponent},
   {path:'addbook', component:AddBookComponent},
 ]
@@ -41,7 +43,8 @@ const appRoutes: Routes =[
     BookDetailComponent,
     BookItemComponent,
     AddBookComponent,
-    SearchBookPipe
+    SearchBookPipe,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
