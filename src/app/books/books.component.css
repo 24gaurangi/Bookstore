@@ -1,0 +1,11 @@
+.row{
+    background-color: beige; 
+    margin: 10px;
+    padding:10px;
+    border-radius: 10px; 
+    border: 1px solid lightgray;
+}
+.col-md-4{
+    max-height: 500px;
+    overflow: auto;
+}
