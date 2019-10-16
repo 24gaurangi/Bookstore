@@ -25,6 +25,7 @@ export class HomeComponent implements OnInit {
     else {
       this.current=0;
     }
+
   }
   
   prevImage() {
@@ -36,6 +37,8 @@ export class HomeComponent implements OnInit {
     else {
       this.current=this.i-3;
     }
+    // var imageHolder = document.getElementById('imageHolder');
+    // imageHolder.innerHTML = "<img src="+this.images[this.current]+">";
   }
 
 }
