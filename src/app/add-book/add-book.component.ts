@@ -31,6 +31,7 @@ export class AddBookComponent implements OnInit, OnDestroy {
     const year = 9999;
     const newBook = new Book(value.author,value.country,image,value.lang,link,pages,value.title,year);
     this.bookService.addBook(newBook);
+    this.bookService.activatedEmitter.next(newBook);
     console.log('Added',newBook);
     form.reset();
   }
