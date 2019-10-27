@@ -1,8 +1,16 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Book } from './book.model'
+import { Subject } from 'rxjs';
+import { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
 
-// @Injectable()
+STORAGE_KEY = 'local_books';
+@Injectable({providedIn:'root'})
+
 export class BookService {
+
+    
+
+    activatedEmitter=new Subject<Book>();
     private books: Book[] = [new Book(
         "Chinua Achebe",
         "Nigeria",
@@ -57,12 +65,20 @@ export class BookService {
         "One Thousand and One Nights",
         1200)];
     
-
+    constructor(@Inject(LOCAL_STORAGE) private storage:StorageService){}
+    
+    
     getBooks(){
+        this.books=this.storage.get(STORAGE_KEY) || [];
         return this.books;
     }
     addBook(book:Book){
-        this.books.push(book);
+        this.activatedEmitter.subscribe(newBook=>{
+            console.log("In service", newBook);
+            this.books.push(newBook);
+            console.log(this.books)
+        })
+        
 
     }
 }

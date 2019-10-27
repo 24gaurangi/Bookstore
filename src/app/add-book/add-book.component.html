@@ -17,23 +17,20 @@
                 <div class="col-sm-5 form-group">
                         <label for="contry">Country</label>
                         <input type="text" id="country" class="form-control" name="country" ngModel required>
-                    </div>
+                </div>
             </div>
             <div class="row">
-                    <div class="col-sm-5 form-group">
-                        <label for="title">Language</label>
-                        <input type="text" id="lang" class="form-control" name="lang" ngModel required>
-                    </div>
-      
-                    <!-- <div class="col-sm-4 form-group">
-                        <label for="author">Author</label>
-                        <input type="text" id="author" class="forma-control" name="author" ngModel>
-                    </div>
-                    <div class="col-sm-4 form-group">
-                            <label for="contry">Country</label>
-                            <input type="text" id="country" class="forma-control" name="country" ngModel>
-                        </div> -->
+                <div class="col-sm-5 form-group">
+                    <label for="title">Language</label>
+                    <input type="text" id="lang" class="form-control" name="lang" ngModel required>
                 </div>
+            </div>
+            <div class="row"> 
+                <div class="col-sm-5 form-group">
+                    <label for="imageLink">Image</label>
+                    <input type="file" id="imageLink" class="form-control" name="imageLink" accept="image/*" ngModel>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-xs-12">
                     <button class="btn btn-success" type="submit" [disabled]="!f.valid">Add</button>
