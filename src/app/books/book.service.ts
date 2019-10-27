@@ -55,14 +55,80 @@ export class BookService {
         "https://en.wikipedia.org/wiki/One_Thousand_and_One_Nights\n",
         288,
         "One Thousand and One Nights",
-        1200)];
+        1200),
+        new Book(
+            "Samuel Beckett",
+            "Republic of Ireland",
+            "../../../assets/molloy-malone-dies-the-unnamable.jpg",
+            "French, English",
+            "https://en.wikipedia.org/wiki/Molloy_(novel)\n",
+            256,
+            "Molloy, Malone Dies, The Unnamable, the trilogy",
+            1952
+         ),
+         new Book(
+            "Giovanni Boccaccio",
+            "Italy",
+            "../../../assets/the-decameron.jpg",
+            "Italian",
+            "https://en.wikipedia.org/wiki/The_Decameron\n",
+            1024,
+            "The Decameron",
+            1351
+         ),
+         new Book(
+            "Jorge Luis Borges",
+            "Argentina",
+            "../../../assets/ficciones.jpg",
+            "Spanish",
+            "https://en.wikipedia.org/wiki/Ficciones\n",
+            224,
+            "Ficciones",
+            1965
+         ),
+         new Book(
+            "Emily Bront\u00eb",
+            "United Kingdom",
+            "../../../assets/wuthering-heights.jpg",
+            "English",
+            "https://en.wikipedia.org/wiki/Wuthering_Heights\n",
+            342,
+            "Wuthering Heights",
+            1847
+         ),
+         new Book(
+            "Albert Camus",
+            "Algeria, French Empire",
+            "../../../assets/l-etranger.jpg",
+            "French",
+            "https://en.wikipedia.org/wiki/The_Stranger_(novel)\n",
+            185,
+            "The Stranger",
+            1942
+         ),
+         new Book(
+            "Paul Celan",
+            "Romania, France",
+            "../../../assets/poems-paul-celan.jpg",
+            "German",
+            "\n",
+            320,
+            "Poems",
+            1952
+         )];
     
 
     getBooks(){
         return this.books;
     }
+    getBookImageLinks(){
+        const imageLinks=[];
+        this.books.forEach(element => {
+            imageLinks.push(element.imageLink);
+        });
+        return imageLinks;
+    }
     addBook(book:Book){
         this.books.push(book);
-
     }
 }

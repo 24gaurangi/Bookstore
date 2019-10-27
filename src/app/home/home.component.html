@@ -1,15 +1,13 @@
 <div class="container">
     <div class="row" id="imageHolder" style="overflow: auto; display: flex;">
-        <div class="col-xs-4" id="slidingImages" *ngFor="let im of images">
-            <img [src]=im>
+        <div class="col-xs-4" id="slidingImages" [style.background-image]="'url('+images[current]+')'">
         </div>
-        <!-- <div class="col-xs-4" id="imageHolder" >
+        <div class="col-xs-4" id="slidingImages" >
             <img [src]=images[current+1]>
         </div>
-        <div class="col-xs-4" id="imageHolder">
+        <div class="col-xs-4" id="slidingImages">
             <img [src]=images[current+2]>
-        </div> -->
-        
+        </div>     
     </div>
     <button class="btn next fa fa-chevron-right" (click)="nextImage()"></button>
     <button class="btn prev fa fa-chevron-left" (click)="prevImage()"></button>

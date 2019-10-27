@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BookService } from '../books/book.service';
  
 
 @Component({
@@ -6,17 +7,18 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
-  
-  
-  images:string[]=['../../assets/fairy-tales.jpg','../../assets/one-thousand-and-one-nights.jpg',
-  '../../assets/the-divine-comedy.jpg','../../assets/things-fall-apart.jpg'];
-  i = this.images.length;
-  current=0;
-  constructor() {
+export class HomeComponent implements OnInit {  
+  images:string[];
+  i:number=0;
+  current:number=0;
+  constructor(private bookService:BookService) {
    }
 
-  ngOnInit() {  }
+  ngOnInit() { 
+    this.images=this.bookService.getBookImageLinks();
+    this.i= this.images.length;
+    console.log(this.images);
+   }
   nextImage() {
     // console.log('c',i,current);
     if (this.current<this.i-3) {
