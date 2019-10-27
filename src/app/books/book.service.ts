@@ -1,9 +1,16 @@
-import { Injectable } from '@angular/core';
-import { Book } from './book.model'
+import { Injectable, Inject, OnInit } from '@angular/core';
+import { Book } from './book.model';
+import { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
+import { Subject } from 'rxjs';
+const local_key = 'bookList';
 
 // @Injectable()
-export class BookService {
-    private books: Book[] = [new Book(
+export class BookService implements OnInit {
+
+    bookListUpdated = new Subject<Book[]>();
+    localbooks: Book[];
+    private books: Book[] = [
+        new Book(
         "Chinua Achebe",
         "Nigeria",
         "../../../assets/things-fall-apart.jpg",
@@ -67,16 +74,6 @@ export class BookService {
             1952
          ),
          new Book(
-            "Giovanni Boccaccio",
-            "Italy",
-            "../../../assets/the-decameron.jpg",
-            "Italian",
-            "https://en.wikipedia.org/wiki/The_Decameron\n",
-            1024,
-            "The Decameron",
-            1351
-         ),
-         new Book(
             "Jorge Luis Borges",
             "Argentina",
             "../../../assets/ficciones.jpg",
@@ -116,9 +113,31 @@ export class BookService {
             "Poems",
             1952
          )];
+
+    constructor(@Inject(LOCAL_STORAGE) private storage: StorageService) { }
+
+    ngOnInit() {
+        this.books=this.storage.get(local_key) || {};
+        this.bookListUpdated.next(this.books);
+    }
     
+    isEqual(book1:Book, book2:Book) {
+        let aProps = Object.getOwnPropertyNames(book1);
+        //let bProps = Object.getOwnPropertyNames(book2);
+        //console.log(aProps);
+        
+        for (let i = 0; i < aProps.length; i++) {
+            let propName = aProps[i];
+            if (book1[propName] !== book2[propName]) {
+                return false;
+            }
+        }
+        return true;
+    }
 
     getBooks(){
+        this.books = this.storage.get(local_key) ||{};
+        this.bookListUpdated.next(this.books);
         return this.books;
     }
     getBookImageLinks(){
@@ -129,6 +148,21 @@ export class BookService {
         return imageLinks;
     }
     addBook(book:Book){
+        this.books=this.storage.get(local_key);
         this.books.push(book);
+        this.bookListUpdated.next(this.books);
+        this.storage.set(local_key, this.books);
     }
+    deleteBook(book:Book){
+        this.books=this.storage.get(local_key);
+        console.log("book to delete", book);
+        this.books=this.books.filter(b => {
+            console.log(b,!this.isEqual(b,book));
+            return !this.isEqual(b,book);
+        })
+        this.bookListUpdated.next(this.books);
+        console.log(this.books);
+        this.storage.set(local_key, this.books);
+    }
+
 }
