@@ -1,0 +1,40 @@
+.custommodal{
+    height:600px;
+    width: 600px;
+    background-color:#fff;
+    z-index:10; 
+    position: absolute;
+    margin: auto;
+    top:5px;
+    /* left:50px;
+    right: 50px; */
+    padding: 30px;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+.modalbg{
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    position: fixed;
+    background-color: black;
+    opacity: .75;
+    z-index: 9;
+}
+.closediv{
+    text-align: center;
+}
+.btn-close{
+    background-color: red;
+    color: #fff;
+}
+.form-class{
+    border: 1px solid beige;
+    border-radius: 10px;
+    padding: 15px;
+    background-color: beige;
+}
+.btn{
+    margin: 5px;
+}

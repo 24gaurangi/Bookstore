@@ -1,47 +1,64 @@
 <div class="row">
     <div class="col-xs-12">
-        <form (ngSubmit)="onAddBook(f)" #f="ngForm"> 
+    <button class="btn btn-primary" (click)="openModal()"> Add New Book </button>
+    <div class="custommodal" *ngIf="box">
+        <form (ngSubmit)="onAddBook(f)" #f="ngForm" class="form-class"> 
             <div class="row">
-                <div class="col-sm-5 form-group">
-                    <label for="title">Title</label>
-                    <input type="text" id="title" class="form-control" name="title" ngModel required>
+                <div class="col-sm-5 form-group"> <span> 
+                    <label for="title">Title :</label>
+                    
+                    <input type="text" id="title" class="form-control" name="title"  ngModel required></span>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-5 form-group">
-                    <label for="author">Author</label>
+                    <label for="author">Author :</label>
                     <input type="text" id="author" class="form-control" name="author" ngModel required>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-5 form-group">
-                        <label for="contry">Country</label>
+                        <label for="contry">Country :</label>
                         <input type="text" id="country" class="form-control" name="country" ngModel required>
                 </div>
             </div>
             <div class="row">
                     <div class="col-sm-5 form-group">
-                        <label for="title">Language</label>
+                        <label for="title">Language :</label>
                         <input type="text" id="lang" class="form-control" name="lang" ngModel required>
                     </div>     
             </div>
             <div class="row">
                     <div class="col-sm-5 form-group">
-                        <label for="imageLink">Language</label>
-                        <input type="file" id="imageLink" class="form-control" name="imageLink" accept="image/*" ngModel required>
+                        <label for="imageLink">Book Cover :</label>
+                        <input type="file" id="imageLink" class="form-control" name="imageLink" accept="image/*" ngModel>
                     </div>     
             </div>
             <div class="row">
-                <div class="col-xs-12">
+                <div class="col-xs-12 form-group">
                     <button class="btn btn-success" type="submit" [disabled]="!f.valid">Add</button>
+                    <button class="btn btn-primary" (click)=reset(f)>Reset</button>
+                </div>
+            </div>
+            <div class="row">
+                <h5 style="color:green">{{addSuccess}}</h5>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 closediv">
+                    <button class="btn btn-close center" (click)="closeModal()">Close</button>
                 </div>
             </div>
         </form>
     </div>
+    <div class="modalbg" *ngIf="box" (click)="closeModal()"></div>
+        
+    </div>
 </div>
+
 <div class="row">
     <div class="col-xs-10">
         <hr>
+        <h4>Click below to delete a Book.</h4>
         <ul class="list-group">
             <li class="list-group-item" style="cursor:pointer" (click)="onDeleteBook(b)" *ngFor="let b of books">
             {{b.title}}

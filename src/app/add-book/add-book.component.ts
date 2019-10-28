@@ -10,6 +10,8 @@ import { Observable, Subscription } from 'rxjs';
   styleUrls: ['./add-book.component.css']
 })
 export class AddBookComponent implements OnInit, OnDestroy {
+  box:Boolean=false;
+  addSuccess:String='';
   books: Book[];
   private booksUpdateSubscription:Subscription;
 
@@ -31,17 +33,29 @@ export class AddBookComponent implements OnInit, OnDestroy {
     const year = 9999;
     const newBook = new Book(value.author,value.country,image,value.lang,link,pages,value.title,year);
     this.bookService.addBook(newBook);
-    this.bookService.activatedEmitter.next(newBook);
+    this.addSuccess="Book added successfully!";
     console.log('Added',newBook);
-    form.reset();
+    
   }
+  reset(form:NgForm){
+    form.reset();
+    this.addSuccess="";
 
+  }
   onDeleteBook(book:Book){
     console.log(book);
     this.bookService.deleteBook(book);
     console.log('Deleted',book);
   }
 
+  openModal(){
+    console.log(this.box);
+    this.box=true;
+  }
+  closeModal(){
+    console.log('closed');
+    this.box=false;
+  }
   ngOnDestroy(){
     this.booksUpdateSubscription.unsubscribe();
   }
