@@ -8,15 +8,15 @@ import { Book } from '../../book.model';
 })
 export class BookItemComponent implements OnInit {
   @Input() book:Book;
-  @Output() bookSelected= new EventEmitter<void>();
+  @Input() index:number;
+  //@Output() bookSelected= new EventEmitter<void>();
   constructor() { }
 
   ngOnInit() {
   }
-  onSelected(){
-    this.bookSelected.emit();
-
-  }
+  // onSelected(){
+  //   this.bookSelected.emit();
+  // }
 }
 
 

@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { StorageServiceModule } from 'ngx-webstorage-service';
 import { AppRoutingModule } from './app-routing.module';
@@ -16,12 +15,6 @@ import { FormsModule } from '@angular/forms';
 import { SearchBookPipe } from './books/search.filter';
 import { HomeComponent } from './home/home.component';
 
-const appRoutes: Routes =[
-  {path:'home', component:HomeComponent},
-  {path:'', component:BooksComponent},
-  {path:'addbook', component:AddBookComponent},
-]
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +29,7 @@ const appRoutes: Routes =[
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes),
+    AppRoutingModule,
     HttpClientModule,
     FormsModule,
     StorageServiceModule

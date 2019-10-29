@@ -4,11 +4,12 @@
     </div>
 
     <div class="col-md-8" >
-        <app-book-detail *ngIf="selectedBook; else infoText" 
-        [book]="selectedBook"></app-book-detail>
+        <router-outlet></router-outlet>
+        <!-- <app-book-detail *ngIf="selectedBook; else infoText" 
+        [book]="selectedBook"></app-book-detail> -->
 
-        <ng-template #infoText>
+        <!-- <ng-template #infoText>
             <p style="text-align: center">Please select a Book!</p>
-        </ng-template>
+        </ng-template> -->
     </div>
 </div>

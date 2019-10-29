@@ -16,7 +16,7 @@ export class BookListComponent implements OnInit {
    
 
   ngOnInit() {
-    console.log("book list inot")
+    console.log("book list init")
     this.books = this.bookService.getBooks();
   }
   onBookSelected(book:Book) {
