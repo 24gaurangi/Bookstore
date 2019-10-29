@@ -114,11 +114,13 @@ export class BookService implements OnInit {
             1952
          )];
 
-    constructor(@Inject(LOCAL_STORAGE) private storage: StorageService) { }
+    constructor(@Inject(LOCAL_STORAGE) private storage: StorageService) { 
+    }
 
     ngOnInit() {
-        this.books=this.storage.get(local_key) || {};
-        this.bookListUpdated.next(this.books);
+        
+        //this.books=this.storage.get(local_key) || {};
+        //this.bookListUpdated.next(this.books);
     }
     
     isEqual(book1:Book, book2:Book) {
@@ -136,12 +138,19 @@ export class BookService implements OnInit {
     }
 
     getBooks(){
+        console.log("localstorage init");
+        const local = this.storage.get(local_key) ||{};
+        if (local === {}){
+            console.log('first call');
+            this.storage.set(local_key, this.books);
+        }
         this.books = this.storage.get(local_key) ||{};
         this.bookListUpdated.next(this.books);
         return this.books;
     }
     getBookImageLinks(){
         const imageLinks=[];
+        this.books = this.storage.get(local_key)
         this.books.forEach(element => {
             imageLinks.push(element.imageLink);
         });

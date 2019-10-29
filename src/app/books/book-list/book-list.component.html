@@ -7,7 +7,7 @@
 <hr>
 <div class="row">
     <div class="col-xs-12" >
-        <app-book-item *ngFor="let b of books | search: searchbook" [book]="b" (bookSelected)="onBookSelected(b)"></app-book-item>
+        <app-book-item *ngFor="let b of books | search: searchbook; let i=index" [book]="b" [index]="i"></app-book-item>
     </div>
 </div>
 

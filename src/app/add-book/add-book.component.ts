@@ -11,6 +11,7 @@ import { Observable, Subscription } from 'rxjs';
 })
 export class AddBookComponent implements OnInit, OnDestroy {
   box:Boolean=false;
+  imageLink:File;
   addSuccess:String='';
   books: Book[];
   private booksUpdateSubscription:Subscription;
@@ -24,10 +25,16 @@ export class AddBookComponent implements OnInit, OnDestroy {
     })
   }
 
+  getFiles(event){ 
+    this.imageLink = event.target.files; 
+    console.log(this.imageLink);
+  }
+
   onAddBook(form:NgForm){
     const value = form.value;
-    //console.log(value);
-    const image="../../../assets/"+value.imageLink.split("fakepath\\")[1];
+    const imageLink = this.imageLink? this.imageLink[0].name:"default.png";
+    const image="../../../assets/"+ imageLink;
+    console.log(image)
     const pages=0;
     const link = '';
     const year = 9999;
@@ -56,6 +63,7 @@ export class AddBookComponent implements OnInit, OnDestroy {
     console.log('closed');
     this.box=false;
   }
+
   ngOnDestroy(){
     this.booksUpdateSubscription.unsubscribe();
   }
