@@ -46,6 +46,7 @@ export class AddBookComponent implements OnInit, OnDestroy {
   }
   reset(form:NgForm){
     form.reset();
+    console.log('click reset',form)
     this.addSuccess="";
 
   }
